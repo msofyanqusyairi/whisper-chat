@@ -17,8 +17,7 @@ mongoose.connect(dbUrl, function(err){
     console.log('DB CONNECTED')
 })
 
-// var index = require('./routes/index')
-// var users = require('./routes/users')
+var index = require('./routes/index')
 var api = require('./routes/api')
 
 var app = express()
@@ -36,8 +35,22 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // app.use('/', index)
-// app.use('/users', users)
 app.use('/api', api)
+
+/* GET home page. */
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+})
+
+/* GET register page. */
+app.get('/register', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public/register.html'))
+})
+
+/* GET signin page. */
+app.get('/signin', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public/signin.html'))
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

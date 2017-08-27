@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Whisper Chat - Home Page</title>
+    <title>Whisper Chat - Register</title>
 
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/semantic-ui/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/custom.css">
@@ -12,9 +12,13 @@
 
 <body>
     <div class="ui raised very padded text container segment">
+        <div class="ui secondary  menu">
+            <a class="item">Sign In</a>
+            <a class="active item">Register</a>
+        </div>
         <h2 class="ui header">Register</h2>
         <div id="app">
-            <div id="nav">
+            <!-- <div id="nav">
                 <a href='#' class="tab" v-on:click="makeActive('homeActive')">Home</a>
                 <a href='#' class="tab" v-on:click="makeActive('infoActive')">Info</a>
             </div>
@@ -23,7 +27,23 @@
                 </div>
                 <div class="boxes" id="info" v-show="isActiveTab('infoActive')">
                 </div>
-            </div>
+            </div> -->
+
+            <form class="ui form">
+                <div class="field">
+                    <label>Username</label>
+                    <input name="username" placeholder="Username" type="text">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input name="password" placeholder="Password" type="password">
+                </div>
+                <div class="field">
+                    <label>Secret Key</label>
+                    <input name="secret_key" placeholder="Secret Key" type="password">
+                </div>
+                <button class="ui button" type="submit">Apply</button>
+            </form>
         </div>
     </div>
 </body>
