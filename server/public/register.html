@@ -18,18 +18,7 @@
         </div>
         <h2 class="ui header">Register</h2>
         <div id="app">
-            <!-- <div id="nav">
-                <a href='#' class="tab" v-on:click="makeActive('homeActive')">Home</a>
-                <a href='#' class="tab" v-on:click="makeActive('infoActive')">Info</a>
-            </div>
-            <div class="content">
-                <div class="boxes" id="home" v-show="isActiveTab('homeActive')">
-                </div>
-                <div class="boxes" id="info" v-show="isActiveTab('infoActive')">
-                </div>
-            </div> -->
-
-            <form class="ui form">
+            <form class="ui form" method="post" action="/api/register">
                 <div class="field">
                     <label>Username</label>
                     <input name="username" placeholder="Username" type="text">
@@ -50,6 +39,7 @@
 
 <script src="/assets/javascripts/jquery/jquery-3.2.1.min.js"></script>
 <script src="/assets/javascripts/vue/vue.dev.js"></script>
+<script src="/assets/javascripts/axios/axios.min.js"></script>
 <script type="text/javascript">
     new Vue({
         el: '#app',
@@ -58,13 +48,17 @@
         },
         methods: {
             makeActive: function (val) {
-                this.choice = val;
+                this.choice = val
             },
             isActiveTab: function (val) {
-                return this.choice === val;
+                return this.choice === val
+            },
+            onSubmit: function () {
+                console.log('oke submit')
+                window.location.href = "/signin"
             }
         }
-    });
+    })
 </script>
 
 </html>

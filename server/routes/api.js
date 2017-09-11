@@ -40,10 +40,10 @@ router.get('/user/:username', function (req, res) {
 })
 
 /* post new user */
-router.post('/user', function (req, res) {
+router.post('/register', function (req, res) {
     /**
      * payload body:
-     * - username: <stirng>
+     * - username: <string>
      * - password: <string>
      * - passkey: <string>
      */
@@ -61,6 +61,25 @@ router.post('/user', function (req, res) {
             return res.status(200).send({
                 status: 'created'
             })
+    })
+})
+
+/* auth user */
+router.post('/signin', function(req, res){
+    /**
+     * payload body:
+     * - username: <string>
+     * - password: <string>
+     */
+    username = req.body.username
+    password = req.body.password
+    console.log('SIGIN USER:', JSON.stringify(username))
+    console.log('SIGIN PASSWORD:', JSON.stringify(password))
+    UserController.authUser(username, password, function(result){
+        console.log("GET RESULT", result)
+        if(result){
+            req.session.user = username
+        }
     })
 })
 

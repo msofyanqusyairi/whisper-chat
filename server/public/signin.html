@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Whisper Chat - Home Page</title>
+    <title>Whisper Chat - Sign In</title>
 
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/semantic-ui/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/custom.css">
@@ -12,24 +12,30 @@
 
 <body>
     <div class="ui raised very padded text container segment">
-        <h2 class="ui header">Register</h2>
+        <div class="ui secondary  menu">
+            <a class="active item">Sign In</a>
+            <a class="item">Register</a>
+        </div>
+        <h2 class="ui header">Sign In</h2>
         <div id="app">
-            <div id="nav">
-                <a href='#' class="tab" v-on:click="makeActive('homeActive')">Home</a>
-                <a href='#' class="tab" v-on:click="makeActive('infoActive')">Info</a>
-            </div>
-            <div class="content">
-                <div class="boxes" id="home" v-show="isActiveTab('homeActive')">
+            <form class="ui form" method="post" action="/api/signin">
+                <div class="field">
+                    <label>Username</label>
+                    <input name="username" placeholder="Username" type="text">
                 </div>
-                <div class="boxes" id="info" v-show="isActiveTab('infoActive')">
+                <div class="field">
+                    <label>Password</label>
+                    <input name="password" placeholder="Password" type="password">
                 </div>
-            </div>
+                <button class="ui button" type="submit">Sign In</button>
+            </form>
         </div>
     </div>
 </body>
 
 <script src="/assets/javascripts/jquery/jquery-3.2.1.min.js"></script>
 <script src="/assets/javascripts/vue/vue.dev.js"></script>
+<script src="/assets/javascripts/axios/axios.min.js"></script>
 <script type="text/javascript">
     new Vue({
         el: '#app',
@@ -38,13 +44,17 @@
         },
         methods: {
             makeActive: function (val) {
-                this.choice = val;
+                this.choice = val
             },
             isActiveTab: function (val) {
-                return this.choice === val;
+                return this.choice === val
+            },
+            onSubmit: function () {
+                console.log('oke submit')
+                // window.location.href = "/"
             }
         }
-    });
+    })
 </script>
 
 </html>

@@ -16,6 +16,22 @@ module.exports = {
         // get only one user, filter by username
         query.exec(callback)
     },
+    authUser: function (username, password, callback) {
+        // select user by its username and password
+        query = User.findOne({
+            $and: [{
+                    username: username
+                },
+                {
+                    password: password
+                }
+
+            ]
+        })
+        query.select('-_id -__v')
+        // get only one user, filter by username
+        query.exec(callback)
+    },
     create: function (username, password, passkey, callback) {
         // create new object user
         userObj = {
@@ -40,11 +56,15 @@ module.exports = {
             password: password,
             passkey: passkey
         }
-        User.update({username: param}, userObj, callback)
+        User.update({
+            username: param
+        }, userObj, callback)
     },
     deleteOne: function (username, callback) {
         // delete object user by its username
-        User.deleteOne({username: username}, callback)
+        User.deleteOne({
+            username: username
+        }, callback)
     }
 
 }
